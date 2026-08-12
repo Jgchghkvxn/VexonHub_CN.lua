@@ -1,208 +1,922 @@
 local Translations = {
-    --全局面板标题
+
+    -- ========================================
+    -- 全局 / VexonHub
+    -- ========================================
+
     ["VexonHub"] = "维森工具箱",
-    ["The Strongest Battle Grounds"] = "最强战场",
-    ["Free"] = "简洁版",
+    ["The Strongest Battlegrounds"] = "最强战场",
+
     ["Search"] = "搜索",
+    ["Settings"] = "设置",
     ["Config"] = "配置文件",
     ["Main"] = "主页",
     ["Misc"] = "杂项功能",
-    ["Bring"] = "玩家牵引",
-    ["Attach"] = "角色绑定跟随",
-    ["Made by MsVexon and Renji"] = "作者：MsVexon 和 Renji",
-    ["Load All Tabs"] = "加载全部标签页",
-    ["Information"] = "信息",
     ["UI"] = "界面",
 
-    --绑定跟随页面
-    ["Target Name"] = "目标玩家名称",
-    ["Player Name..."] = "填写玩家名称...",
-    ["Active Attach"] = "开启绑定跟随",
-    ["Position Settings"] = "位置参数设置",
-    ["Offset X (Left/Right)"] = "横向偏移X（左/右）",
-    ["Offset Y (Height)"] = "纵向偏移Y（高度）",
-    ["Offset Z (Forward/Back)"] = "纵深偏移Z（前/后）",
-    ["Rotation Settings"] = "旋转设置",
-    ["Rotation X (Pitch)"] = "X轴旋转（俯仰）",
-    ["Rotation Y (Yaw)"] = "Y轴旋转（水平转向）",
-    ["Rotation Z (Roll)"] = "Z轴旋转（翻滚）",
+    ["Free"] = "简洁版",
+    ["Simple Version"] = "简洁版",
+    ["Premium"] = "高级版",
 
-    --功能说明
-    ["Note:"] = "注意说明：",
-    ["its like a loop tp but with no cooldown rly op. Only works for rly good executors like delta if you use executors that not support cloneref will probably just crash. Xeno not Supported!"] = "该功能为无冷却循环瞬移，性能较强；仅兼容高性能执行器，部分执行器会闪退，Xeno执行器不支持",
+    ["Made by MsVexon and Renji"] =
+        "作者：MsVexon 和 Renji",
 
-    --移动加速板块
-    ["Speed Boost Keybind"] = "加速快捷键",
-    ["Press to set your Speed Boost key"] = "点击设置加速触发按键",
-    ["Jump"] = "超级跳跃",
-    ["Jump Boost Value"] = "跳跃力度数值",
-    ["No Stun Cframe Walk"] = "免僵直位移行走",
-    ["Select Movement Modifications"] = "选择移动修改项",
-    ["Movement"] = "移动设置",
-    ["Speed (Keybind On/Off)"] = "移速开关（快捷键控制）",
-    ["Speed Boost Value"] = "移速增幅倍率",
+    ["Load All Tabs"] =
+        "加载全部标签页",
 
-    --连招功能板块
-    ["Auto upper variants"] = "自动释放进阶招式",
-    ["Automatically makes the upper variants of the moves like Uppercut or Atomic samurai third move.."] = "自动释放上勾拳、原子武士三段等进阶招式",
-    ["Auto Uppercut"] = "自动上勾拳",
-    ["Fake Downslam"] = "假砸地招式",
-    ["Auto Safe Zone"] = "自动安全区",
-    ["Spawn Fe Stones"] = "生成铁质石块",
+    ["Information"] =
+        "信息",
 
-    --隐身与模式板块
-    ["VexonHub Mini"] = "精简版维森工具箱",
-    ["First version of the VexonHub but rly usefull"] = "初代精简版本，实用性高",
-    ["Semi Godmode"] = "半无敌模式",
-    ["Makes you little bit in underground so others cant hit you with mini moves like M1"] = "角色轻微下沉，规避普通基础攻击命中",
-    ["No Dash Cool Down"] = "冲刺无冷却",
-    ["Roast Dead Players"] = "对血量耗尽玩家互动",
-    ["Bang Dummy :>"] = "生成测试假人",
-    ["Upside Down"] = "角色倒置",
-    ["Other players will see you upside down"] = "其他玩家视角中角色为倒置状态",
-    ["VFX Changer"] = "特效修改器",
 
-    --特效颜色板块
-    ["VFX Color picker"] = "特效取色器",
-    ["Change The Selected VFX Color"] = "修改选中特效颜色",
+    -- ========================================
+    -- 左侧菜单
+    -- ========================================
 
-    --飞行板块
-    ["Fly"] = "飞行功能",
-    ["Fly Speed"] = "飞行速度",
-    ["Fly Keybind"] = "飞行快捷键",
-    ["Keybind toggle"] = "快捷键开关",
+    ["Disguise"] = "伪装",
+    ["Teleport"] = "传送",
+    ["ESP"] = "透视",
+    ["Moveset"] = "招式",
+    ["Fling"] = "甩飞",
+    ["Anti Ban"] = "防封",
+    ["Tools"] = "工具",
+    ["Defence"] = "防御",
+    ["Limited Emote"] = "限定表情",
 
-    --传送板块
-    ["Teleports"] = "传送功能",
-    ["Up, Down, Left, Right, Forward, Back with UI + Keybinds"] = "六向传送功能，支持界面与快捷键",
-    ["Down"] = "向下",
-    ["Up"] = "向上",
-    ["Forward"] = "向前",
-    ["Teleport Down"] = "向下传送",
-    ["Teleport Down Distance"] = "向下传送距离",
-    ["Teleport UI"] = "传送界面开关",
-    ["Teleport Keybind"] = "传送快捷键",
 
-    --隐身专项
-    ["Invisibility"] = "隐身模式",
-    ["It elevates the character slightly and prevents others from seeing it. If you want to become completely invisible, it is recommended to use the toggle at the bottom."] = "轻微抬升角色，规避玩家视野；完全隐身可开启下方开关",
-    ["Invisibility Character Hide"] = "角色深度隐藏",
-    ["Hides your character in groud with making your character upside down"] = "角色下沉隐藏并倒置模型",
+    -- ========================================
+    -- Fighting / 战斗
+    -- ========================================
 
-    --执行器适配提示
-    ["Delta is supported by VexonHub"] = "已适配Delta执行器",
-    ["Your executor is strong enough to handle this script"] = "当前执行器可正常运行脚本"
+    ["Fighting"] = "战斗",
+
+    ["Target Mode"] =
+        "目标模式",
+
+    ["Nearest"] =
+        "最近目标",
+
+    ["Aim Type"] =
+        "瞄准类型",
+
+    ["Camera"] =
+        "摄像机",
+
+    ["Aim Part"] =
+        "瞄准部位",
+
+    ["Head"] =
+        "头部",
+
+    ["Wall Check"] =
+        "墙体检测",
+
+
+    ["M1 Click Reach"] =
+        "M1攻击范围",
+
+    ["Reach"] =
+        "攻击距离",
+
+    ["Detection Distance"] =
+        "检测距离",
+
+    ["Teleport Distance"] =
+        "传送距离",
+
+    ["Auto Hit"] =
+        "自动攻击",
+
+    ["Auto Dodge M1/Moves"] =
+        "自动闪避M1/技能",
+
+
+    ["Easy Kill Player panel"] =
+        "轻松击杀玩家面板",
+
+    ["not works... only here for the who made it."] =
+        "无法使用……仅为制作该功能的人员保留。",
+
+    ["made by one of the first members of 维森工具箱."] =
+        "由维森工具箱最早期成员之一制作。",
+
+
+
+    -- ========================================
+    -- Bring / Attach
+    -- ========================================
+
+    ["Bring"] =
+        "玩家牵引",
+
+    ["Attach"] =
+        "角色绑定跟随",
+
+    ["Target Name"] =
+        "目标玩家名称",
+
+    ["Player Name..."] =
+        "填写玩家名称...",
+
+    ["Active Attach"] =
+        "开启绑定跟随",
+
+
+    ["Position Settings"] =
+        "位置参数设置",
+
+    ["Offset X (Left/Right)"] =
+        "横向偏移X（左/右）",
+
+    ["Offset Y (Height)"] =
+        "纵向偏移Y（高度）",
+
+    ["Offset Z (Forward/Back)"] =
+        "纵深偏移Z（前/后）",
+
+
+    ["Rotation Settings"] =
+        "旋转设置",
+
+    ["Rotation X (Pitch)"] =
+        "X轴旋转（俯仰）",
+
+    ["Rotation Y (Yaw)"] =
+        "Y轴旋转（水平转向）",
+
+    ["Rotation Z (Roll)"] =
+        "Z轴旋转（翻滚）",
+
+
+
+    -- ========================================
+    -- Farming / 刷取
+    -- ========================================
+
+    ["Farming"] =
+        "自动刷取",
+
+    ["Statistics"] =
+        "统计",
+
+    ["Live Auto Farm Stats"] =
+        "实时自动刷取统计",
+
+
+    ["First Kill Count"] =
+        "首次击杀数",
+
+    ["Current Kill Count"] =
+        "当前击杀数",
+
+    ["Total Kill Earned"] =
+        "总击杀数",
+
+    ["Your Streak"] =
+        "你的连杀数",
+
+    ["Next Emote"] =
+        "下一个表情",
+
+    ["Total Emotes Earned"] =
+        "获得的表情总数",
+
+
+    ["Total Webhooks Sent"] =
+        "已发送Webhook总数",
+
+    ["Next webhook in"] =
+        "下次Webhook发送倒计时",
+
+    ["Farming For"] =
+        "刷取时间",
+
+
+    ["Test Webhook"] =
+        "测试Webhook",
+
+    ["Send a test message to verify webhook"] =
+        "发送测试消息以验证Webhook",
+
+
+    ["Interval"] =
+        "间隔",
+
+    ["Seconds (default: 1)"] =
+        "秒（默认：1）",
+
+
+    ["Webhook Fields"] =
+        "Webhook字段",
+
+    ["Select which stats to include in webhook"] =
+        "选择要包含在Webhook中的统计数据",
+
+    ["Current..."] =
+        "当前……",
+
+    ["Webhook Active"] =
+        "启用Webhook",
+    ["Webhook Active"] =
+        "启用Webhook",
+
+
+    -- ========================================
+    -- Auto Dodge / 自动闪避
+    -- ========================================
+
+    ["Auto Dodge"] =
+        "自动闪避",
+
+    ["Automatically teleports you to safety when a nearby player starts an attack"] =
+        "当附近玩家开始攻击时，自动将你传送到安全位置",
+
+    ["Dodge Nearby Players"] =
+        "闪避附近玩家",
+
+    ["Steps out of the way when someone close to you is throwing a hit"] =
+        "当附近有人发动攻击时，自动躲开攻击范围",
+
+    ["Stay Away Duration (s)"] =
+        "保持距离时间（秒）",
+
+    ["How many seconds to"] =
+        "持续多少秒",
+
+
+
+    -- ========================================
+    -- ESP / 透视
+    -- ========================================
+
+    ["ESPs"] =
+        "透视功能",
+
+    ["Toggle ESP features"] =
+        "切换透视功能",
+
+    ["Enable ESP"] =
+        "启用透视",
+
+    ["HumanoidRootPart"] =
+        "角色核心部件",
+
+    ["Highlight"] =
+        "高亮",
+
+    ["ESP Transparency"] =
+        "透视透明度",
+
+    ["Highlight Transparency"] =
+        "高亮透明度",
+
+    ["Max Distance"] =
+        "最大距离",
+
+    ["Infinite Distance"] =
+        "无限距离",
+
+    ["Selected Players Only"] =
+        "仅选中的玩家",
+
+    ["Selected ESP Targets"] =
+        "选中的透视目标",
+
+    ["Refresh Player List"] =
+        "刷新玩家列表",
+
+
+
+    -- ========================================
+    -- Moveset / 招式
+    -- ========================================
+
+    ["Character Movesets"] =
+        "角色招式",
+
+
+    -- 通用
+
+    ["The Garbage Ghost (Universal)"] =
+        "垃圾幽灵（通用）",
+
+    ["Trash-Can Man (Universal)"] =
+        "垃圾桶人（通用）",
+
+    ["StarGlitcher (Universal)"] =
+        "星之故障者（通用）",
+
+
+
+    -- 埼玉
+
+    ["JK (Saitama)"] =
+        "JK（埼玉）",
+
+    ["Kenjihin (Saitama)"] =
+        "Kenjihin（埼玉）",
+
+    ["Gojo 1 (Saitama)"] =
+        "五条悟1（埼玉）",
+
+    ["Gojo 2 (Saitama)"] =
+        "五条悟2（埼玉）",
+
+    ["Gojo 3 (Saitama)"] =
+        "五条悟3（埼玉）",
+
+    ["Mahito (Saitama)"] =
+        "真人（埼玉）",
+
+    ["Yuji/Sukuna (Saitama)"] =
+        "虎杖/宿傩（埼玉）",
+
+    ["Ichigo Kurosaki (Saitama)"] =
+        "黑崎一护（埼玉）",
+
+    ["JJS Gojo (Saitama)"] =
+        "JJS五条悟（埼玉）",
+
+    ["Hakari (Saitama)"] =
+        "秤金次（埼玉）",
+
+
+
+    -- 饿狼
+
+    ["Arcaura (Garou)"] =
+        "Arcaura（饿狼）",
+
+    ["KJ (Garou)"] =
+        "KJ（饿狼）",
+
+    ["Chainsaw Man (Garou)"] =
+        "电锯人（饿狼）",
+
+    ["Okarun (Garou)"] =
+        "高仓健（饿狼）",
+
+    ["Sukuna (Garou)"] =
+        "宿傩（饿狼）",
+
+    ["Gojo (Garou)"] =
+        "五条悟（饿狼）",
+
+    ["Cyber Psycho (Garou)"] =
+        "赛博精神病（饿狼）",
+
+    ["Suriyu (Garou)"] =
+        "水流（饿狼）",
+
+    ["Goku V2 (Garou)"] =
+        "悟空 V2（饿狼）",
+
+    ["Minos Prime (Garou)"] =
+        "米诺斯 Prime（饿狼）",
+
+
+
+    -- 原子武士
+
+    ["Toji (Atomic Samurai)"] =
+        "伏黑甚尔（原子武士）",
+
+    ["Toji 2 (Atomic Samurai)"] =
+        "伏黑甚尔2（原子武士）",
+
+    ["Sukuna (Atomic Samurai)"] =
+        "宿傩（原子武士）",
+
+
+
+    -- 音速
+
+    ["Toji (Sonic)"] =
+        "伏黑甚尔（音速）",
+
+    ["Voltra (Sonic)"] =
+        "Voltra（音速）",
+
+
+
+    -- ========================================
+    -- Movement / 移动
+    -- ========================================
+
+    ["Movement"] =
+        "移动设置",
+
+    ["Select Movement Modifications"] =
+        "选择移动修改项",
+
+    ["Speed (Keybind On/Off)"] =
+        "移速开关（快捷键控制）",
+
+    ["Speed Boost Value"] =
+        "移速增幅倍率",
+
+    ["Speed Boost Keybind"] =
+        "加速快捷键",
+
+    ["Press to set your Speed Boost key"] =
+        "点击设置加速触发按键",
+
+    ["Jump"] =
+        "超级跳跃",
+
+    ["Jump Boost Value"] =
+        "跳跃力度数值",
+
+    ["No Stun Cframe Walk"] =
+        "免僵直位移行走",
+
+
+
+    -- ========================================
+    -- Fly / 飞行
+    -- ========================================
+
+    ["Fly"] =
+        "飞行功能",
+
+    ["Fly Speed"] =
+        "飞行速度",
+
+    ["Fly Keybind"] =
+        "飞行快捷键",
+
+    ["Keybind toggle"] =
+        "快捷键开关",
+
+
+
+    -- ========================================
+    -- Teleport / 传送
+    -- ========================================
+
+    ["Teleports"] =
+        "传送功能",
+
+    ["Up, Down, Left, Right, Forward, Back with UI + Keybinds"] =
+        "六向传送功能，支持界面与快捷键",
+
+    ["Up"] =
+        "向上",
+
+    ["Down"] =
+        "向下",
+
+    ["Left"] =
+        "向左",
+
+    ["Right"] =
+        "向右",
+
+    ["Forward"] =
+        "向前",
+
+    ["Back"] =
+        "向后",
+
+    ["Teleport Down"] =
+        "向下传送",
+
+    ["Teleport Down Distance"] =
+        "向下传送距离",
+
+    ["Teleport UI"] =
+        "传送界面开关",
+
+    ["Teleport Keybind"] =
+        "传送快捷键",
+    -- ========================================
+    -- VFX / 特效
+    -- ========================================
+
+    ["VFX Changer"] =
+        "特效修改器",
+
+    ["VFX Color picker"] =
+        "特效取色器",
+
+    ["Change The Selected VFX Color"] =
+        "修改选中特效颜色",
+
+
+
+    -- ========================================
+    -- Invisibility / 隐身
+    -- ========================================
+
+    ["Invisibility"] =
+        "隐身模式",
+
+    ["It elevates the character slightly and prevents others from seeing it. If you want to become completely invisible, it is recommended to use the toggle at the bottom."] =
+        "轻微抬升角色，规避玩家视野；完全隐身可开启下方开关",
+
+    ["Invisibility Character Hide"] =
+        "角色深度隐藏",
+
+    ["Hides your character in groud with making your character upside down"] =
+        "角色下沉隐藏并倒置模型",
+
+
+    ["Semi Godmode"] =
+        "半无敌模式",
+
+    ["Makes you little bit in underground so others cant hit you with mini moves like M1"] =
+        "角色轻微下沉，规避普通基础攻击命中",
+
+    ["No Dash Cool Down"] =
+        "冲刺无冷却",
+
+    ["Upside Down"] =
+        "角色倒置",
+
+    ["Other players will see you upside down"] =
+        "其他玩家视角中角色为倒置状态",
+
+
+
+    -- ========================================
+    -- 连招功能
+    -- ========================================
+
+    ["Auto upper variants"] =
+        "自动释放进阶招式",
+
+    ["Automatically makes the upper variants of the moves like Uppercut or Atomic samurai third move.."] =
+        "自动释放上勾拳、原子武士三段等进阶招式",
+
+    ["Auto Uppercut"] =
+        "自动上勾拳",
+
+    ["Fake Downslam"] =
+        "假砸地招式",
+
+    ["Auto Safe Zone"] =
+        "自动安全区",
+
+    ["Spawn Fe Stones"] =
+        "生成铁质石块",
+
+
+
+    -- ========================================
+    -- Supa 功能
+    -- ========================================
+
+    ["Enable Auto Supa"] =
+        "启用自动Supa",
+
+    ["Select Abilities"] =
+        "选择技能",
+
+    ["Stream, 向..."] =
+        "流动，向上……",
+
+    ["Turn Delay"] =
+        "转身延迟",
+
+    ["Stream Pre Delay"] =
+        "流动预延迟",
+
+    ["Supa Keybind"] =
+        "Supa快捷键",
+
+
+
+    -- ========================================
+    -- 执行器提示
+    -- ========================================
+
+    ["Delta is supported by VexonHub"] =
+        "已适配Delta执行器",
+
+    ["Your executor is strong enough to handle this script"] =
+        "当前执行器可正常运行脚本",
+
+
+
+    -- ========================================
+    -- 通用状态
+    -- ========================================
+
+    ["Enable"] =
+        "启用",
+
+    ["Disable"] =
+        "禁用",
+
+    ["Active"] =
+        "启用",
+
+    ["Current"] =
+        "当前",
+
+    ["Refresh"] =
+        "刷新",
+
+    ["Select"] =
+        "选择",
+
+    ["Selected"] =
+        "已选择",
+
+    ["On"] =
+        "开启",
+
+    ["Off"] =
+        "关闭",
+
+    ["Yes"] =
+        "是",
+
+    ["No"] =
+        "否",
+
+    ["None"] =
+        "无",
+
+    ["Unknown"] =
+        "未知",
+
+    ["N/A"] =
+        "无",
+
+
 }
 
+
+
+
+
+
+-- ========================================
+-- 翻译函数
+-- ========================================
+
 local function translateText(text)
-    if not text or type(text) ~= "string" then return text end
-    
+
+    if not text or type(text) ~= "string" then
+        return text
+    end
+
+
     if Translations[text] then
         return Translations[text]
     end
-    
+
+
     for en, cn in pairs(Translations) do
-        if text:find(en) then
-            return text:gsub(en, cn)
+
+        if string.find(text, en, 1, true) then
+
+            text = string.gsub(
+                text,
+                en,
+                cn
+            )
+
         end
+
     end
-    
+
+
     return text
+
 end
 
-local function setupTranslationEngine()
-    local success, err = pcall(function()
-        local oldIndex = getrawmetatable(game).__newindex
-        setreadonly(getrawmetatable(game), false)
-        
-        getrawmetatable(game).__newindex = newcclosure(function(t, k, v)
-            if (t:IsA("TextLabel") or t:IsA("TextButton") or t:IsA("TextBox")) and k == "Text" then
-                v = translateText(tostring(v))
-            end
-            return oldIndex(t, k, v)
-        end)
-        
-        setreadonly(getrawmetatable(game), true)
-    end)
-    
-    if not success then
-        warn("元表劫持失败:", err)
-       
-        local translated = {}
-        local function scanAndTranslate()
-            for _, gui in ipairs(game:GetService("CoreGui"):GetDescendants()) do
-                if (gui:IsA("TextLabel") or gui:IsA("TextButton") or gui:IsA("TextBox")) and not translated[gui] then
-                    pcall(function()
-                        local text = gui.Text
-                        if text and text ~= "" then
-                            local translatedText = translateText(text)
-                            if translatedText ~= text then
-                                gui.Text = translatedText
-                                translated[gui] = true
-                            end
-                        end
-                    end)
-                end
-            end
-            
-            local player = game:GetService("Players").LocalPlayer
-            if player and player:FindFirstChild("PlayerGui") then
-                for _, gui in ipairs(player.PlayerGui:GetDescendants()) do
-                    if (gui:IsA("TextLabel") or gui:IsA("TextButton") or gui:IsA("TextBox")) and not translated[gui] then
-                        pcall(function()
-                            local text = gui.Text
-                            if text and text ~= "" then
-                                local translatedText = translateText(text)
-                                if translatedText ~= text then
-                                    gui.Text = translatedText
-                                    translated[gui] = true
-                                end
-                            end
-                        end)
-                    end
-                end
-            end
-        end
-        
-        local function setupDescendantListener(parent)
-            parent.DescendantAdded:Connect(function(descendant)
-                if descendant:IsA("TextLabel") or descendant:IsA("TextButton") or descendant:IsA("TextBox") then
-                    task.wait(0.1)
-                    pcall(function()
-                        local text = descendant.Text
-                        if text and text ~= "" then
-                            local translatedText = translateText(text)
-                            if translatedText ~= text then
-                                descendant.Text = translatedText
-                            end
-                        end
-                    end)
-                end
-            end)
-        end
-        
-        pcall(setupDescendantListener, game:GetService("CoreGui"))
-        local player = game:GetService("Players").LocalPlayer
-        if player and player:FindFirstChild("PlayerGui") then
-            pcall(setupDescendantListener, player.PlayerGui)
-        end
-        
-        while true do
-            scanAndTranslate()
-            task.wait(3)
-        end
+
+
+
+
+
+-- ========================================
+-- 单个GUI翻译
+-- ========================================
+
+local function translateGui(gui)
+
+    if not gui then
+        return
     end
+
+
+    if gui:IsA("TextLabel")
+    or gui:IsA("TextButton")
+    or gui:IsA("TextBox") then
+
+
+        pcall(function()
+
+            local oldText = gui.Text
+
+            if oldText and oldText ~= "" then
+
+                local newText =
+                    translateText(oldText)
+
+
+                if newText ~= oldText then
+
+                    gui.Text = newText
+
+                end
+
+            end
+
+        end)
+
+    end
+
 end
+
+
+
+
+
+
+-- ========================================
+-- 扫描界面
+-- ========================================
+
+local function scanGui(parent)
+
+    if not parent then
+        return
+    end
+
+
+    pcall(function()
+
+        for _,gui in ipairs(
+            parent:GetDescendants()
+        ) do
+
+            translateGui(gui)
+
+        end
+
+    end)
+
+end
+
+
+
+
+
+
+-- ========================================
+-- 汉化启动
+-- ========================================
+
+local function setupTranslationEngine()
+
+
+    local Players =
+        game:GetService("Players")
+
+
+    local CoreGui =
+        game:GetService("CoreGui")
+
+
+    local LocalPlayer =
+        Players.LocalPlayer
+
+
+
+    scanGui(CoreGui)
+
+
+
+    if LocalPlayer
+    and LocalPlayer:FindFirstChild("PlayerGui") then
+
+        scanGui(LocalPlayer.PlayerGui)
+
+    end
+
+
+
+
+    pcall(function()
+
+        CoreGui.DescendantAdded:Connect(
+            function(gui)
+
+                task.wait(0.1)
+
+                translateGui(gui)
+
+            end
+        )
+
+    end)
+
+
+
+
+    if LocalPlayer then
+
+        pcall(function()
+
+            LocalPlayer.PlayerGui.DescendantAdded:Connect(
+                function(gui)
+
+                    task.wait(0.1)
+
+                    translateGui(gui)
+
+                end
+            )
+
+        end)
+
+    end
+
+
+
+
+
+    task.spawn(function()
+
+        while true do
+
+
+            scanGui(CoreGui)
+
+
+            if LocalPlayer
+            and LocalPlayer:FindFirstChild("PlayerGui") then
+
+                scanGui(LocalPlayer.PlayerGui)
+
+            end
+
+
+            task.wait(3)
+
+        end
+
+    end)
+
+
+end
+
+
+
+
+
+
+-- 等待加载
 
 task.wait(2)
 
-setupTranslationEngine()
 
-local success, err = pcall(function()
---外部脚本加载位置（已帮你精准放入指定链接）
-loadstring(game:HttpGet("https://rawscripts.net/raw/The-Strongest-Battlegrounds-TSB-SCRIPT-VexonHub-146385"))()
+
+
+
+
+-- ========================================
+-- 加载 VexonHub 原脚本
+-- ========================================
+
+local success,err = pcall(function()
+
+
+    loadstring(
+        game:HttpGet(
+        "https://rawscripts.net/raw/The-Strongest-Battlegrounds-TSB-SCRIPT-VexonHub-146385"
+        )
+    )()
+
+
 end)
 
+
+
+
+
 if not success then
-    warn("加载失败:", err)
+
+    warn(
+        "VexonHub加载失败:",
+        err
+    )
+
+    return
+
 end
+
+
+
+
+
+
+-- 启动汉化
+
+setupTranslationEngine()
+，
+
+，
