@@ -13,6 +13,7 @@ local Translations = {
     ["Main"] = "主页",
     ["Misc"] = "杂项功能",
     ["UI"] = "界面",
+    ["Information"] = "信息",
 
     ["Free"] = "简洁版",
     ["Simple Version"] = "简洁版",
@@ -24,8 +25,6 @@ local Translations = {
     ["Load All Tabs"] =
         "加载全部标签页",
 
-    ["Information"] =
-        "信息",
 
 
     -- ========================================
@@ -41,6 +40,7 @@ local Translations = {
     ["Tools"] = "工具",
     ["Defence"] = "防御",
     ["Limited Emote"] = "限定表情",
+
 
 
     -- ========================================
@@ -145,9 +145,6 @@ local Translations = {
 
     ["Rotation Z (Roll)"] =
         "Z轴旋转（翻滚）",
-
-
-
     -- ========================================
     -- Farming / 刷取
     -- ========================================
@@ -216,8 +213,7 @@ local Translations = {
 
     ["Webhook Active"] =
         "启用Webhook",
-    ["Webhook Active"] =
-        "启用Webhook",
+
 
 
     -- ========================================
@@ -338,10 +334,9 @@ local Translations = {
 
     ["Hakari (Saitama)"] =
         "秤金次（埼玉）",
-
-
-
-    -- 饿狼
+    -- ========================================
+    -- Garou / 饿狼
+    -- ========================================
 
     ["Arcaura (Garou)"] =
         "Arcaura（饿狼）",
@@ -375,7 +370,9 @@ local Translations = {
 
 
 
-    -- 原子武士
+    -- ========================================
+    -- Atomic Samurai / 原子武士
+    -- ========================================
 
     ["Toji (Atomic Samurai)"] =
         "伏黑甚尔（原子武士）",
@@ -388,7 +385,9 @@ local Translations = {
 
 
 
-    -- 音速
+    -- ========================================
+    -- Sonic / 音速
+    -- ========================================
 
     ["Toji (Sonic)"] =
         "伏黑甚尔（音速）",
@@ -488,6 +487,9 @@ local Translations = {
 
     ["Teleport Keybind"] =
         "传送快捷键",
+
+
+
     -- ========================================
     -- VFX / 特效
     -- ========================================
@@ -534,11 +536,8 @@ local Translations = {
 
     ["Other players will see you upside down"] =
         "其他玩家视角中角色为倒置状态",
-
-
-
     -- ========================================
-    -- 连招功能
+    -- 连招功能 / Combo
     -- ========================================
 
     ["Auto upper variants"] =
@@ -643,16 +642,8 @@ local Translations = {
     ["N/A"] =
         "无",
 
-
-}
-
-
-
-
-
-
--- ========================================
--- 翻译函数
+}-- ========================================
+-- 翻译文本函数
 -- ========================================
 
 local function translateText(text)
@@ -662,14 +653,21 @@ local function translateText(text)
     end
 
 
+    -- 完全匹配
+
     if Translations[text] then
+
         return Translations[text]
+
     end
 
 
-    for en, cn in pairs(Translations) do
 
-        if string.find(text, en, 1, true) then
+    -- 部分匹配
+
+    for en,cn in pairs(Translations) do
+
+        if string.find(text,en,1,true) then
 
             text = string.gsub(
                 text,
@@ -690,7 +688,6 @@ end
 
 
 
-
 -- ========================================
 -- 单个GUI翻译
 -- ========================================
@@ -702,6 +699,7 @@ local function translateGui(gui)
     end
 
 
+
     if gui:IsA("TextLabel")
     or gui:IsA("TextButton")
     or gui:IsA("TextBox") then
@@ -709,25 +707,35 @@ local function translateGui(gui)
 
         pcall(function()
 
+
             local oldText = gui.Text
 
+
             if oldText and oldText ~= "" then
+
 
                 local newText =
                     translateText(oldText)
 
 
+
                 if newText ~= oldText then
+
 
                     gui.Text = newText
 
+
                 end
+
 
             end
 
+
         end)
 
+
     end
+
 
 end
 
@@ -735,29 +743,35 @@ end
 
 
 
-
 -- ========================================
--- 扫描界面
+-- 扫描GUI
 -- ========================================
 
 local function scanGui(parent)
+
 
     if not parent then
         return
     end
 
 
+
     pcall(function()
+
 
         for _,gui in ipairs(
             parent:GetDescendants()
         ) do
 
+
             translateGui(gui)
+
 
         end
 
+
     end)
+
 
 end
 
@@ -765,26 +779,31 @@ end
 
 
 
-
 -- ========================================
--- 汉化启动
+-- 汉化监听引擎
 -- ========================================
 
 local function setupTranslationEngine()
+
 
 
     local Players =
         game:GetService("Players")
 
 
+
     local CoreGui =
         game:GetService("CoreGui")
+
 
 
     local LocalPlayer =
         Players.LocalPlayer
 
 
+
+
+    -- 初次扫描
 
     scanGui(CoreGui)
 
@@ -793,45 +812,67 @@ local function setupTranslationEngine()
     if LocalPlayer
     and LocalPlayer:FindFirstChild("PlayerGui") then
 
-        scanGui(LocalPlayer.PlayerGui)
+
+        scanGui(
+            LocalPlayer.PlayerGui
+        )
+
 
     end
 
 
 
 
+
+    -- 监听CoreGui新增UI
+
     pcall(function()
+
 
         CoreGui.DescendantAdded:Connect(
             function(gui)
 
+
                 task.wait(0.1)
+
 
                 translateGui(gui)
 
+
             end
         )
+
 
     end)
 
 
 
 
+
+    -- 监听PlayerGui新增UI
+
     if LocalPlayer then
 
+
         pcall(function()
+
 
             LocalPlayer.PlayerGui.DescendantAdded:Connect(
                 function(gui)
 
+
                     task.wait(0.1)
 
+
                     translateGui(gui)
+
 
                 end
             )
 
+
         end)
+
 
     end
 
@@ -839,7 +880,10 @@ local function setupTranslationEngine()
 
 
 
+    -- 循环扫描防止漏翻
+
     task.spawn(function()
+
 
         while true do
 
@@ -847,33 +891,36 @@ local function setupTranslationEngine()
             scanGui(CoreGui)
 
 
+
             if LocalPlayer
             and LocalPlayer:FindFirstChild("PlayerGui") then
 
-                scanGui(LocalPlayer.PlayerGui)
+
+                scanGui(
+                    LocalPlayer.PlayerGui
+                )
+
 
             end
 
 
+
             task.wait(3)
 
+
         end
+
 
     end)
 
 
+
 end
-
-
-
-
-
-
--- 等待加载
+-- ========================================
+-- 等待游戏加载
+-- ========================================
 
 task.wait(2)
-
-
 
 
 
@@ -887,7 +934,7 @@ local success,err = pcall(function()
 
     loadstring(
         game:HttpGet(
-        "https://rawscripts.net/raw/The-Strongest-Battlegrounds-TSB-SCRIPT-VexonHub-146385"
+            "https://rawscripts.net/raw/The-Strongest-Battlegrounds-TSB-SCRIPT-VexonHub-146385"
         )
     )()
 
@@ -898,14 +945,21 @@ end)
 
 
 
+-- ========================================
+-- 加载失败提示
+-- ========================================
+
 if not success then
+
 
     warn(
         "VexonHub加载失败:",
         err
     )
 
+
     return
+
 
 end
 
@@ -913,10 +967,8 @@ end
 
 
 
-
+-- ========================================
 -- 启动汉化
+-- ========================================
 
 setupTranslationEngine()
-，
-
-，
